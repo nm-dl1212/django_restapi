@@ -4,6 +4,8 @@ djangoのRESTAPIを作成する
 # 参考
 https://zenn.dev/whitecat_22/articles/f826daf43155cd
 
+https://cloudsmith.co.jp/blog/backend/2023/08/2462017.html
+
 # 使用方法
 1. devcontainerで開く
 　
@@ -36,18 +38,22 @@ https://zenn.dev/whitecat_22/articles/f826daf43155cd
     `http://localhost:8000/admin/`
 
     Product>追加と進み，テーブルに適当な要素を追加してみる。
-    たとえば，`Name: あんぱん，Price:105`など。
+    たとえば，`Name: あんぱん, Price:120, Description": "あんこたっぷり", "review": "Good"`など。
 
 8. APIでデータベースにアクセスしてみる。
     * GET
         ``` bash 
         curl -X GET http://localhost:8000/products/products/
-        # [{"name":"あんぱん","price":105}]
+
+        # 以下のようにレスポンスが返る。"priceWithTax"が計算され，テーブルに追記されているのがポイント。
+        # [{"name":"あんぱん","price":120,"description":"あんこたっぷり","review":"Good","priceWithTax":132}]
         ```
+
     * POST
         ``` bash 
-        curl -X POST -H "Content-Type: application/json" -d '{"name": "しょくぱん", "price": 150}' http://localhost:8000/products/products/
+        curl -X POST -H "Content-Type: application/json" -d '{"name": "しょくぱん", "price": 150, "description": "もちもち", "review": "Soso"}' http://localhost:8000/products/products/
         ```
+
     * DELETE
         ``` bash
         curl -X DELETE http://localhost:8000/products/products/1/
