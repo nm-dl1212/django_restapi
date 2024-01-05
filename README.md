@@ -6,37 +6,39 @@ https://zenn.dev/whitecat_22/articles/f826daf43155cd
 
 # 使用方法
 1. devcontainerで開く
+　
+2. `.env.org`をコピーして`.env`に書き換える
 
-2. マイグレーションファイルを生成
+3. マイグレーションファイルを生成
     ``` bash
     $ python manage.py makemigrations products
     ```
 
-3. マイグレーションを実行し，テーブルを作成する
+4. マイグレーションを実行し，テーブルを作成する
     ``` bash
     $ python manage.py migrate
     ```
 
-4. 管理ユーザーを作成する。
+5. 管理ユーザーを作成する。
 
     (ユーザー名，メールアドレス，パスワードを設定。)
     ``` bash
     $ python manage.py createsuperuser
     ```
     
-5. 開発サーバーを起動
+6. 開発サーバーを起動
     ``` bash
     $ python manage.py runserver
     ```
 
-6. 以下のurlにアクセス。
+7. 以下のurlにアクセス。
 
     `http://localhost:8000/admin/`
 
     Product>追加と進み，テーブルに適当な要素を追加してみる。
     たとえば，`Name: あんぱん，Price:105`など。
 
-7. APIでデータベースにアクセスしてみる。
+8. APIでデータベースにアクセスしてみる。
     * GET
         ``` bash 
         curl -X GET http://localhost:8000/products/products/
