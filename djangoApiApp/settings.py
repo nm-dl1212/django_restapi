@@ -73,10 +73,23 @@ WSGI_APPLICATION = "djangoApiApp.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+import os                       # 追加
+import environ                  # 追加
+ 
+env = environ.Env()             # 追加
+env.read_env('.env')            # 追加
+ 
+SECRET_KEY = env('SECRET_KEY')  # 修正
+DEBUG = env('DEBUG')            # 修正
+ 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': env.get_value('DATABASE_ENGINE', default='django.db.backends.sqlite3'),      # 修正
+        'NAME': env.get_value('DATABASE_DB', default=os.path.join(BASE_DIR, 'db.sqlite3')),    # 修正
+        'USER': env.get_value('DATABASE_USER', default='django_user'),                         # 追加
+        'PASSWORD': env.get_value('DATABASE_PASSWORD', default='password'),                    # 追加
+        'HOST': env.get_value('DATABASE_HOST', default='localhost'),                           # 追加
+        'PORT': env.get_value('DATABASE_PORT', default='5432'),                                # 追加
     }
 }
 
@@ -103,9 +116,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "ja"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Tokyo"
 
 USE_I18N = True
 
