@@ -22,4 +22,7 @@ urlpatterns = [
 
     # API
     path('products/', include('products.urls')),  # 追加
+
+    path('img_detect/', include('img_detect.urls')),  # 追加
+    
 ]

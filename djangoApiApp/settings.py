@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'rest_framework',  # 追加
     'products',        # 追加
+    'img_detect',        # 追加
 ]
 
 MIDDLEWARE = [
