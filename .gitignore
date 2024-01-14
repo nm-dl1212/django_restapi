@@ -1,6 +1,8 @@
 __pycache__/
 .pyc
 
+yolov5/
 
 .env
 db.sqlite3
+*.pt
