@@ -1,7 +1,6 @@
 from django.db import models
+from .detect import detect
 
-# Create your models here.
-# 以下を追加
 class ImgDetect(models.Model):
 
     # 入力するカラム
@@ -11,15 +10,19 @@ class ImgDetect(models.Model):
     # 自動追加されるカラム
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    # 空白のカラム
+    inference_label = models.CharField(max_length=255, blank=True, null=True,  editable=False)
     
-    # 計算式を追加
-    @property
-    def inference_label(self):
-        return "ラベル"
-    
+    def save(self, *args, **kwargs):
+        # オーバーライドして保存前に推論ラベルを設定
+        if not self.inference_label:
+            self.inference_label = detect(self.path)
+        super().save(*args, **kwargs)
+
     @property
     def inference_image(self):
         return "画像へのパス"
-    
+
     def __str__(self):
         return self.name
