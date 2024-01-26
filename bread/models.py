@@ -1,10 +1,9 @@
 from django.db import models
 
-# Create your models here.
-# 以下を追加
-class Product(models.Model):
 
-    # 入力するカラム
+class Bread(models.Model):
+
+    # ユーザーに入力させる項目
     name = models.CharField(max_length=30)
     price = models.IntegerField()
     description = models.CharField(max_length=500)
@@ -16,7 +15,7 @@ class Product(models.Model):
     )
     review = models.CharField(choices=REVIEW_SET, max_length=8)
     
-    # 自動追加されるカラム
+    # 自動追加される項目
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     

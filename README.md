@@ -13,7 +13,7 @@ https://cloudsmith.co.jp/blog/backend/2023/08/2462017.html
 
 3. マイグレーションファイルを生成
     ``` bash
-    $ python manage.py makemigrations products
+    $ python manage.py makemigrations bread
     ```
 
 4. マイグレーションを実行し，テーブルを作成する
@@ -43,7 +43,7 @@ https://cloudsmith.co.jp/blog/backend/2023/08/2462017.html
 8. APIでデータベースにアクセスしてみる。
     * GET
         ``` bash 
-        curl -X GET http://localhost:8000/products/products/
+        curl -X GET http://localhost:8000/bread/bread/
 
         # 以下のようにレスポンスが返る。"priceWithTax"が計算され，テーブルに追記されているのがポイント。
         # [{"name":"あんぱん","price":120,"description":"あんこたっぷり","review":"Good","priceWithTax":132}]
@@ -51,10 +51,10 @@ https://cloudsmith.co.jp/blog/backend/2023/08/2462017.html
 
     * POST
         ``` bash 
-        curl -X POST -H "Content-Type: application/json" -d '{"name": "しょくぱん", "price": 150, "description": "もちもち", "review": "Soso"}' http://localhost:8000/products/products/
+        curl -X POST -H "Content-Type: application/json" -d '{"name": "しょくぱん", "price": 150, "description": "もちもち", "review": "Soso"}' http://localhost:8000/bread/bread/
         ```
 
     * DELETE
         ``` bash
-        curl -X DELETE http://localhost:8000/products/products/1/
+        curl -X DELETE http://localhost:8000/bread/bread/1/
         ```

@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'rest_framework',  # 追加
-    'products',        # 追加
+    'bread',        # 追加
     'img_detect',        # 追加
 ]
 
