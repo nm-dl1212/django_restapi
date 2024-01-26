@@ -4,7 +4,7 @@ from rest_framework import status
 
 from .models import ImgDetect
 from .serializers import ImgDetectSerializer
-from .detect import detect
+
 
 class ImgDetectViewSet(viewsets.ModelViewSet):
 
