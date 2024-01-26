@@ -2,6 +2,7 @@ __pycache__/
 .pyc
 
 yolov5/
+*/migrations/
 
 .env
 db.sqlite3
